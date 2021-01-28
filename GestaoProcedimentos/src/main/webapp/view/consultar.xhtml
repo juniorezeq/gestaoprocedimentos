@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Gestão Procedimentos</title>
+	<link type="text/css" rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" />
+</h:head>
+
+<h:body style="padding: 60px;">
+
+	<ui:composition template="/view/layout/Layout.xhtml">
+
+		<ui:define name="content">
+			<b:container>
+				<h:form id="form1">
+					<p:messages id="messages" showDetail="true" closable="true">
+					</p:messages>
+			
+					<b:tabView activeIndex="0">
+						<b:tab title="Procedimentos">
+							<b:dataTable value="#{procedimentoBean.procedimentos}" var="lista" editable="true">
+								<b:dataTableColumn value="#{lista.num_procedimento}" label="Número" />
+								<b:dataTableColumn value="#{lista.idade}" label="Idade" />
+								<b:dataTableColumn value="#{lista.sexo}" label="Sexo" />
+								<b:dataTableColumn value="#{lista.str_Permitido()}" label="Permitido" />
+							</b:dataTable>
+                         </b:tab>
+                         <b:tab title="Aprovações">
+							<b:dataTable value="#{autorizacaoBean.aprovacoes}" var="lista2" editable="true">
+								<b:dataTableColumn value="#{lista2.id}" label="Id da Autoriação" />
+								<b:dataTableColumn value="#{lista2.nome}" label="Nome" />
+								<b:dataTableColumn value="#{lista2.idade}" label="Idade" />
+								<b:dataTableColumn value="#{lista2.sexo}" label="Sexo" />
+								<b:dataTableColumn value="#{lista2.procedimento.num_procedimento}" label="Procedimento" />
+								<b:dataTableColumn value="#{lista2.usuario.login}" label="Aprovador" />
+							</b:dataTable>
+                         </b:tab>
+					</b:tabView>
+
+				</h:form>
+
+			</b:container>
+		</ui:define>
+
+	</ui:composition>
+
+
+
+</h:body>
+
+</html>

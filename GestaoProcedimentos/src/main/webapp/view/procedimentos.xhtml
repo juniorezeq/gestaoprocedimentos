@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Sistema Gestão OS</title>
+	<link type="text/css" rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" />
+</h:head>
+
+<h:body style="padding: 60px;">
+
+	<ui:composition template="/view/layout/Layout.xhtml">
+
+		<ui:define name="content">
+			<b:container layout="fluid">
+				<h:form id="form1">
+	           		 <p:messages id="messages" showDetail="true" closable="true">
+	            	 </p:messages>
+					<b:panel title="Procedimentos" collapsible="false">
+	 						 <b:row>
+								   <b:column medium-screen="2">
+								      <h:outputText value="Procedimento:" for="numero" />
+								   </b:column>
+								   <b:column medium-screen="4">
+								      <b:inputText placeholder="Número do Procedimento" id="numero" value="#{procedimentoBean.num_procedimento}">
+								      </b:inputText>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="numero" />
+								   </b:column>
+								</b:row>
+								<b:row>
+								   <b:column medium-screen="2">
+								      <h:outputText value="Idade:" for="idade" />
+								   </b:column>
+								   <b:column medium-screen="4">
+								      <b:inputText placeholder="Idade" id="idade" value="#{procedimentoBean.idade}">
+								      </b:inputText>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="idade" />
+								   </b:column>
+								</b:row>
+								<b:row>
+									<b:column medium-screen="2">
+								      <h:outputText value="Sexo:" for="sexo" />
+								     </b:column>
+								     <b:column medium-screen="4">
+								   <b:selectOneMenu id="sexo" value="#{procedimentoBean.sexo}" required="true"
+								      select2="true">
+								      <f:selectItem itemLabel="(favor selecione um valor)" itemValue="" />
+								      <f:selectItem itemLabel="Masculino" itemValue="M" />
+								      <f:selectItem itemLabel="Feminino" itemValue="F" />
+								   </b:selectOneMenu>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="sexo" />
+								   </b:column>
+								</b:row>
+								<b:row>
+									<b:column medium-screen="2">
+									 </b:column>
+								     <b:column medium-screen="4">
+								     <b:commandButton value="Buscar" action="#{procedimentoBean.buscarProcedimento()}" id="buscar" update="@form" process="@form" look="primary"
+                        					style="width:50%" />
+								   	</b:column>
+								   	<b:column medium-screen="6" style-class="message">
+								      <b:message for="buscar" />
+								   </b:column>
+								</b:row>
+															
+					</b:panel>
+				</h:form>
+				
+				<h:form id="form2">
+	           		 <p:messages id="messages" showDetail="true" closable="true">
+	            	 </p:messages>
+
+				</h:form>
+			</b:container>
+		</ui:define>
+
+	</ui:composition>
+
+
+
+</h:body>
+
+</html>

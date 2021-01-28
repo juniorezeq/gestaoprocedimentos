@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Gestão Procedimentos</title>
+</h:head>
+
+<h:body style="padding: 60px;">
+
+	<ui:composition template="/view/layout/Layout.xhtml">
+
+		<ui:define name="content">
+			<b:container layout="fluid" >
+				<h:form id="form1">
+	           		 <p:messages id="messages" showDetail="true" closable="true">
+	            	 </p:messages>
+					<b:panel title="Aprovação de Procedimentos Médicos" collapsible="false">
+	 						 <b:row>
+								   <b:column medium-screen="2">
+								      <h:outputText value="Autorização:" for="numero" />
+								   </b:column>
+								   <b:column medium-screen="4">
+								      <b:inputText tooltip="Digite o ID da Aprovação para editá-la ou deixe este campo em branco para iniciar uma nova aprovação." placeholder="Id Autorização" id="numero" value="#{autorizacaoBean.id}">
+								      <f:ajax render="@form" event="change" listener="#{autorizacaoBean.buscaAutorizacao()}"/>
+								      </b:inputText>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="numero" />
+								   </b:column>
+								</b:row>
+								<b:row>
+								   <b:column medium-screen="2">
+								      <h:outputText value="Nome:" for="nome" />
+								   </b:column>
+								   <b:column medium-screen="4">
+								      <b:inputText  required="true" replaceholder="Nome do Paciente" id="nome" value="#{autorizacaoBean.autorizacao.nome}">
+								      </b:inputText>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="nome" />
+								   </b:column>
+								</b:row>
+								<b:row>
+								   <b:column medium-screen="2">
+								      <h:outputText value="Idade:" for="idade" />
+								   </b:column>
+								   <b:column medium-screen="4">
+								      <b:inputText placeholder="Idade" required="true"  id="idade" value="#{autorizacaoBean.autorizacao.idade}">
+								      </b:inputText>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="idade" />
+								   </b:column>
+								</b:row>
+								<b:row>
+									<b:column medium-screen="2">
+								      <h:outputText value="Sexo:" for="sexo" />
+								     </b:column>
+								     <b:column medium-screen="4">
+								   <b:selectOneMenu id="sexo" value="#{autorizacaoBean.autorizacao.sexo}" required="true"
+								      select2="true">
+								      <f:selectItem itemLabel="(favor selecione um valor)" itemValue="" />
+								      <f:selectItem itemLabel="Masculino" itemValue="M" />
+								      <f:selectItem itemLabel="Feminino" itemValue="F" />
+								   </b:selectOneMenu>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="sexo" />
+								   </b:column>
+								</b:row>
+								<b:row>
+								   <b:column medium-screen="2">
+								      <h:outputText value="Procedimento" for="procedimento" />
+								   </b:column>
+								   <b:column medium-screen="4">
+								      <b:inputText required="true"  placeholder="Número do Procedimento" id="procedimento" value="#{autorizacaoBean.num_procedimento}">
+								      </b:inputText>
+								   </b:column>
+								   <b:column medium-screen="6" style-class="message">
+								      <b:message for="idade" />
+								   </b:column>
+								</b:row>
+								
+								<b:row>
+								    <b:column span="2" offset="2">
+								    <b:commandButton value="gravar" update="@form" process="@form" action="#{autorizacaoBean.gravar()}" id="gravar"  look="primary" />
+								   	</b:column>
+								   <b:column span="2">
+								     <b:commandButton value="Apagar"  id="apagar" update="@form" process="@form" action="#{autorizacaoBean.apagar()}" look="danger" />
+								   	</b:column>
+								</b:row>
+						
+					</b:panel>
+				</h:form>
+
+			</b:container>
+		</ui:define>
+
+	</ui:composition>
+
+
+
+</h:body>
+
+</html>

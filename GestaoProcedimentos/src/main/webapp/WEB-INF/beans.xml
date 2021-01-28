@@ -1,0 +1,5 @@
+<beans>
+	<interceptors>
+		<class>br.com.asq.tx.GerenciadorDeTransacao</class>
+	</interceptors>
+</beans>

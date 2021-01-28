@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Sistema Gestão OS</title>
+	<link type="text/css" rel="stylesheet"
+			href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" />
+</h:head>
+
+<h:body style="padding: 60px;">
+
+	<ui:composition template="/view/layout/Layout.xhtml">
+
+		<ui:define name="content">
+			<b:container>
+			
+			<p:fieldset legend="Autorização de Procedimentos">
+					<h:form id="frmCadastro">
+
+						<h:panelGrid columns="3" style="width: 40%;"  responsive="true">
+										
+							<p:outputLabel value="Id Autorização:" for="num_auto" />
+							<p:inputText id="num_auto"
+								value="#{autorizacaoBean.id}" size="20" >
+							<f:ajax render="@form" event="change" listener="#{autorizacaoBean.buscaAutorizacao()}"/>
+							</p:inputText>
+							<p:tooltip for="num_auto" value="Digite o ID da Aprovação para editá-la ou deixe este campo em branco para iniciar uma nova aprovação."/>
+						    
+						    <p:outputLabel value="Nome:" for="nome" />
+							<p:inputText required="true" id="nome"
+								value="#{autorizacaoBean.autorizacao.nome}" size="20" />
+								<p:tooltip for="nome" value="digite o nome do paciente." position="right"/>	
+								
+							<p:outputLabel value="Idade: " for="idade" />
+							<p:inputText required="true" id="idade"
+								value="#{autorizacaoBean.autorizacao.idade}" size="20" />
+							<p:tooltip for="idade" value="digite o idade do paciente." position="right"/>	
+									
+							<p:outputLabel value="Sexo: " for="sexo" />						
+							 <p:selectOneMenu required="true" id="sexo" value="#{autorizacaoBean.autorizacao.sexo}">
+                  			    <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                    			<f:selectItem itemLabel="Feminino" itemValue="F"/>
+                			</p:selectOneMenu>
+                			<p:tooltip for="sexo" value="informe sexo do paciente." position="right"/>
+								
+							<p:outputLabel value="Procedimento: " for="procedimento" />
+							<p:inputText  required="true" id="procedimento"
+								value="#{autorizacaoBean.num_procedimento}" size="20" />
+							<p:tooltip for="procedimento" value="digite o número do procedimento." position="right"/>
+           
+								
+						</h:panelGrid>
+						<br></br>
+						     <p:commandButton value="Confirmar" action="#{autorizacaoBean.gravar()}" update="@form" process="@form">
+            					<p:confirm header="Confirmação" message="Confirma a gravação dos dados?" icon="pi pi-exclamation-triangle"/>
+        					</p:commandButton>
+        					
+        					<p:commandButton value="Apagar" action="#{autorizacaoBean.gravar()}" update="@form" process="@form">
+            					<p:confirm header="Confirmação" message="Confirma exclusão do registro?" icon="pi pi-exclamation-triangle"/>
+        					</p:commandButton>
+						
+						<p:commandButton value="Voltar" icon="fa fa-fw fa-undo"
+							action="#" style="margin-left:5px"
+							process="frmCadastro" update="frmCadastro" />
+							
+							  <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+							   	   <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+         						   <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+       						 </p:confirmDialog>
+						<p:messages id="msg" autoUpdate="true" showDetail="true"
+									closable="true" style="60%">
+									<p:effect type="pulsate" event="load" delay="500" />
+						</p:messages>
+					</h:form>
+				</p:fieldset>
+			
+			
+
+			</b:container>
+		</ui:define>
+
+	</ui:composition>
+
+
+
+</h:body>
+
+</html>

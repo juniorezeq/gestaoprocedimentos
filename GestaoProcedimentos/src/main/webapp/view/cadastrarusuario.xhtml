@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Gestão Procedimentos</title>
+	<link type="text/css" rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" />
+</h:head>
+
+<h:body style="padding: 60px;">
+
+	<ui:composition template="/view/layout/Layout.xhtml">
+   <ui:define name="content">
+      <b:container layout="fluid">
+         <h:form id="form1">
+            <p:messages id="messages" showDetail="true" closable="true">
+            </p:messages>
+            <b:panel title="Cadastro de novo usuário" collapsible="false">
+               <b:row>
+                  <b:column medium-screen="2">
+                     <h:outputText value="Username:" for="username" />
+                  </b:column>
+                  <b:column medium-screen="4">
+                     <b:inputText placeholder="Username" id="username" value="#{cadastroBean.usuario.login}"
+                        ajax="true" autocomplete="false" update="@(.message)">
+                        <f:facet name="prepend">
+                           <b:icon name="user" />
+                        </f:facet>
+                     </b:inputText>
+                  </b:column>
+                  <b:column medium-screen="6" style-class="message">
+                     <b:message for="username" />
+                  </b:column>
+               </b:row>
+               <b:row tooltip="Senha para o usuário.">
+                  <b:column medium-screen="2">
+                     <h:outputText value="Password:" />
+                  </b:column>
+                  <b:column medium-screen="4">
+                     <b:inputSecret placeholder="Password" id="password" value="#{cadastroBean.usuario.senha}"
+                        ajax="true" autocomplete="false" update="@(.message)">
+                        <f:facet name="prepend">
+                           <b:iconAwesome name="key" />
+                        </f:facet>
+                     </b:inputSecret>
+                  </b:column>
+                  <b:column medium-screen="6" styleClass="message">
+                  </b:column>
+               </b:row>
+               <b:row>
+                  <b:column span="2" offset="2">
+                     <b:commandButton value="Gravar" action="#{cadastroBean.incluir}" update="@form" look="primary"
+                        style="width:100%" />
+                  </b:column>
+               </b:row>
+            </b:panel>
+         </h:form>
+      </b:container>
+   </ui:define>
+</ui:composition>
+
+
+
+</h:body>
+
+</html>
