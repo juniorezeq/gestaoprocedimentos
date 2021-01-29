@@ -13,9 +13,9 @@
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-216-202-161.eu-west-1.compute.amazonaws.com:5432/uqszhpgmjjeyqv" />
-			<property name="javax.persistence.jdbc.user" value="ickysyatknghmd" />
-			<property name="javax.persistence.jdbc.password" value="9053b9b0b7497e59296030f15c5d7102400c15f28e8eebd868bdbb3d8b1cdb78" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-99-81-238-134.eu-west-1.compute.amazonaws.com:5432/da23cqn6oigjod" />
+			<property name="javax.persistence.jdbc.user" value="rgfdbuipgukbrf" />
+			<property name="javax.persistence.jdbc.password" value="b16d3a9aff852c549e7e9a232f2fb35f6be4fe20f211a89aae8463258775a2df" />
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
