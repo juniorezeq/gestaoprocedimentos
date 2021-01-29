@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/GestaoProcedimentos-0.0.1-SNAPSHOT.war
+web: web: java -jar target/GestaoProcedimentos-0.0.1-SNAPSHOT.war
