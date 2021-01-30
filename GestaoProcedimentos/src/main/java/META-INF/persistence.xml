@@ -13,24 +13,10 @@
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-99-81-238-134.eu-west-1.compute.amazonaws.com:5432/da23cqn6oigjod" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgres://ec2-99-81-238-134.eu-west-1.compute.amazonaws.com:5432/da23cqn6oigjod" />
 			<property name="javax.persistence.jdbc.user" value="rgfdbuipgukbrf" />
 			<property name="javax.persistence.jdbc.password" value="b16d3a9aff852c549e7e9a232f2fb35f6be4fe20f211a89aae8463258775a2df" />
-
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-				<property name="hibernate.default_schema" value="public" />
-			<property name="hibernate.max_fetch_depth" value="3" />
-			
-			<property name="hibernate.c3p0.min_size" value="2" />
-			<property name="hibernate.c3p0.max_size" value="25" />
-			<property name="hibernate.c3p0.timeout" value="120" />
-			<property name="hibernate.c3p0.acquire_increment" value="2" />
-			<property name="hibernate.c3p0.max_statements"  value="30" />
-			<property name="hibernate.c3p0.idle_test_period"  value="150" />
-			<property name="hibernate.c3p0.preferredTestQuery"  value="select 1" />
 		</properties>
 	</persistence-unit>
 
